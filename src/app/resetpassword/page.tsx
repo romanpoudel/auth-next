@@ -58,6 +58,7 @@ export default function VerifyEmailPage() {
             id="confirmpassword"
             value={confirmpassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="confirm password"
           />
           <button onClick={resetPassword}>Submit</button>
         </div>
