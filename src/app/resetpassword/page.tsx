@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 
 export default function VerifyEmailPage() {
   const router = useRouter();
@@ -15,11 +16,13 @@ export default function VerifyEmailPage() {
     try {
       if (password !== confirmpassword) {
         throw new Error("Passwords do not match");
+        toast.error("Passwords donot match")
       }
       const res = await axios.post("/api/users/resetpassword", {
         token,
         password,
       });
+      toast.success("Password reset successful");
       router.push("/login");
       console.log(res.data);
     } catch (error: any) {
